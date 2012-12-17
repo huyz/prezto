@@ -17,6 +17,7 @@ fi
 # Editors
 #
 
+# huy: These should be overridden in one's .zshenv
 export EDITOR='nano'
 export VISUAL='nano'
 export PAGER='less'
@@ -104,30 +105,39 @@ fi
 # huy: more paths
 #
 
+# Bind envar to local array
 typeset -T NODE_PATH node_path
+# Make arrays only have unique elements
 typeset -U path manpath fpath classpath pythonpath perl5lib node_path
 
 # Add some other paths
 for path_dir in \
-  /opt/local/bin \
-  /opt/local/sbin \
-  /brew/bin \
-  /brew/sbin \
-  /brew/share/npm/bin \
-  /usr/local/bin \
-  /usr/local/sbin \
+  /opt/local/{sbin,bin} \
+  /brew/{share/npm/bin,sbin,bin} \
+  /usr/local/{sbin,bin} \
   ~/bin \
 ; do
   [[ -d $path_dir ]] && path=($path_dir $path)
 done
 
-# Add some other paths
+# Add some other manpaths
 for path_dir in \
   /opt/local/man \
-  /brew/share/man \
+  $(brew --prefix 2>/dev/null)/share/man \
   /usr/local/man \
   ~/man \
 ; do
   [[ -d $path_dir ]] && manpath=($path_dir $manpath)
 done
+
+# Add some other nodepaths
+for path_dir in \
+  /opt/local/lib/node_modules \
+  $(brew --prefix 2>/dev/null)/lib/node_modules \
+  /usr/local/lib/node_modules \
+  ~/node_modules \
+; do
+  [[ -d $path_dir ]] && node_path=($path_dir $node_path)
+done
+
 unset path_dir
