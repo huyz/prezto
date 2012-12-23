@@ -86,7 +86,7 @@ function prompt_progressive_setup {
   # If git module is loaded, we'll try to use that
   if (( $+functions[git-info] )); then
     # Set git-info parameters (from sorin prompt)
-    zstyle ':prezto:module:git:info:action' format '%F{yellow}%s%f%%b'
+    zstyle ':prezto:module:git:info:action' format ':%F{yellow}%s%f%%b'
     zstyle ':prezto:module:git:info:added' format ' %F{green}✚%f%%b'
     zstyle ':prezto:module:git:info:ahead' format ' %F{yellow}⬆%f%%b'
     zstyle ':prezto:module:git:info:behind' format ' %F{yellow}⬇%f%%b'
