@@ -11,6 +11,9 @@
 #     - A callback function can decide whether to use the featureful git-info or faster
 #       vcs_info on a case-by-case basis:
 #       define prompt_is_git_info_ok and return false when you want to force the faster vcs_info
+#     - git-info can be disabled on a specific repo by adding to .git/config:
+#       [prompt]
+#           showinfo = false
 #   - If using the default vcs_info module:
 #     - Only shows the path on the left prompt by default.
 #     - Crops the path to a defined length and only shows the path relative to
@@ -44,7 +47,7 @@ function prompt_progressive_precmd {
 
       if ! (( $+functions[prompt_is_git_info_ok] )) || prompt_is_git_info_ok $USERNAME $HOST $repo; then
         git-info
-        git_info[repo]="$repo"
+        [[ -n "$git_info" ]] && git_info[repo]="$repo"
         return
       fi
     fi
