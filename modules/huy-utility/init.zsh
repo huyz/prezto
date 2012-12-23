@@ -62,8 +62,8 @@ unset _gnu_utility_{p,cmds,cmd,pcmd,ls} _ls_color_flag
 
 ### cd
 
-# Change directory to the parent of given path, while chasing links
-# Usage: cdp =tree
+# Change directory to the parent of given path, while chasing symoblic links
+# Usage: cdp =tree  OR   cdp .
 function cdp() {
   cd -P $(dirname "$1")
 }
