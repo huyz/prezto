@@ -65,7 +65,7 @@ unset _gnu_utility_{p,cmds,cmd,pcmd,ls} _ls_color_flag
 # Change directory to the parent of given path, while chasing symoblic links
 # Usage: cdp =tree  OR   cdp .
 function cdp() {
-  cd -P $(dirname "$1")
+  cd -P $(dirname $(readlink "$1"))
 }
 
 ### Network commands
