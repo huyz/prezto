@@ -50,6 +50,7 @@ zstyle ':prezto:load' pmodule \
   'dpkg' \
   'fasd' \
   'huy-reset' \
+  'huy-terminal' \
   'huy-editor' \
   'huy-utility' \
 
