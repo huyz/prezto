@@ -151,7 +151,7 @@ function prompt_progressive_setup {
     0) style=bare ;;
     1) style=minimal ;;
     2) style=fast ;; # Default
-    3|) style=concise ;; # Default
+    3|'') style=concise ;; # Default
     4) style=unabbreviated ;;
     5) style=multiline ;;
     6) style=verbose ;;
