@@ -51,9 +51,11 @@ if (( ${+commands[${_gnu_utility_pcmd}]} )); then
 else
   _gnu_utility_ls="command ls"
 fi
+# LC_COLLATE is for GNU ls
+# CLICOLOR_FORCE is for BSD ls
 eval "
   function ls {
-    LC_COLLATE=posix $_gnu_utility_ls -ACF \"\$@\" $_ls_color_flag | \$PAGER -e
+    LC_COLLATE=posix CLICOLOR_FORCE=1 $_gnu_utility_ls -ACF \"\$@\" $_ls_color_flag | \$PAGER -e
   }
 "
 alias ll="$aliases[ll] -a"
